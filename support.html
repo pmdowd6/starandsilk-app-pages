@@ -4,68 +4,490 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Star and Silk Support</title>
-  <meta name="description" content="Support for Star and Silk.">
+  <meta name="description" content="Support for Star and Silk, including setup help, privacy questions, bug reports, and TestFlight feedback.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23201b18'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='34' font-weight='700' fill='%23f4df9a'%3ES%3C/text%3E%3C/svg%3E">
   <style>
+    :root {
+      color-scheme: light;
+      --ink: #17151c;
+      --muted: #5d5867;
+      --paper: #fffdf8;
+      --porcelain: #f5f6f0;
+      --mist: #eaf2ee;
+      --night: #1f1b18;
+      --line: #dcd8ce;
+      --teal: #1f6f68;
+      --fig: #7b3f57;
+      --amber: #b68324;
+      --blue: #325c80;
+      --shadow: 0 24px 70px rgba(24, 21, 20, 0.17);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #fbfafc;
-      color: #19171d;
-      line-height: 1.6;
-    }
-    main {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-    h1 {
-      margin-top: 0;
-      font-size: 40px;
-      letter-spacing: 0;
-    }
-    h2 {
-      margin-top: 34px;
-      font-size: 22px;
-    }
-    p, li {
-      font-size: 16px;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
     }
     a {
-      color: #7a4f8f;
+      color: inherit;
+    }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 64px;
+      padding: 12px clamp(18px, 4vw, 56px);
+      background: rgba(255, 253, 248, 0.94);
+      border-bottom: 1px solid rgba(220, 216, 206, 0.9);
+      backdrop-filter: blur(14px);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 780;
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--night);
+      color: #f4df9a;
+      font-size: 18px;
+      font-weight: 780;
+      line-height: 1;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav-links a {
+      text-decoration: none;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(54px, 8vw, 104px) clamp(20px, 5vw, 72px);
+      background: var(--night);
+      color: #fffdf8;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: url("Screenshots/AppStoreUpload-1284x2778/05-settings.png");
+      background-size: cover;
+      background-position: 70% 12%;
+      opacity: 0.38;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(22, 18, 15, 0.95), rgba(22, 18, 15, 0.72) 54%, rgba(22, 18, 15, 0.4)),
+        linear-gradient(0deg, rgba(22, 18, 15, 0.72), rgba(22, 18, 15, 0.1));
+    }
+    .hero-inner,
+    .section-inner {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+    }
+    .eyebrow,
+    .section-kicker {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow {
+      color: #f2d58f;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
+    }
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+    .lede {
+      max-width: 720px;
+      margin: 20px 0 0;
+      color: #f0eadf;
+      font-size: clamp(20px, 2.4vw, 29px);
+      line-height: 1.2;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 780;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .button.primary {
+      background: #fffdf8;
+      color: var(--night);
+    }
+    .button.secondary {
+      border-color: rgba(255, 253, 248, 0.5);
+      color: #fffdf8;
+    }
+    .button.dark {
+      background: var(--night);
+      color: #fffdf8;
+    }
+    .section {
+      padding: clamp(48px, 7vw, 86px) clamp(20px, 5vw, 72px);
+    }
+    .section.alt {
+      background: var(--porcelain);
+      border-block: 1px solid var(--line);
+    }
+    .section-kicker {
+      color: var(--teal);
+    }
+    h2 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    .section-copy {
+      max-width: 760px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .support-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(22px, 4vw, 44px);
+      margin-top: 34px;
+      align-items: stretch;
+    }
+    .mailbox {
+      padding: clamp(24px, 4vw, 34px);
+      border-radius: 8px;
+      background: var(--night);
+      color: #fffdf8;
+      box-shadow: var(--shadow);
+    }
+    .mailbox .section-kicker {
+      color: #f2d58f;
+    }
+    .mailbox a {
+      color: #fffdf8;
+      font-size: clamp(22px, 3vw, 31px);
+      font-weight: 820;
+      text-decoration: none;
+    }
+    .mailbox p {
+      color: #e9e2d2;
+    }
+    .topic-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .topic,
+    .faq {
+      min-height: 166px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+    .topic strong,
+    .faq strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 19px;
+      line-height: 1.22;
+    }
+    .topic p,
+    .faq p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .topic a,
+    .faq a {
+      color: var(--teal);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 30px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .check {
+      min-height: 126px;
+      padding: 18px;
+      background: #fffdf8;
+    }
+    .check span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--amber);
+      font-weight: 820;
+    }
+    .check p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .legal-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .legal-strip a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 11px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--ink);
+      font-weight: 760;
+      text-decoration: none;
+    }
+    footer {
+      padding: 30px clamp(20px, 5vw, 72px);
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .footer-inner {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      font-size: 14px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    @media (max-width: 880px) {
+      .support-panel,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .site-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+      .topic-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .button {
+        width: 100%;
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="Site navigation">
+    <a class="brand" href="index.html" aria-label="Star and Silk home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>Star and Silk</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#contact">Contact</a>
+      <a href="#help">Help Topics</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </nav>
+
   <main>
-    <h1>Star and Silk Support</h1>
-    <p>Need help with Star and Silk? Contact <a href="mailto:support@starandsilk.app">support@starandsilk.app</a>.</p>
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Customer service</p>
+        <h1>Star and Silk Support</h1>
+        <p class="lede">Help with setup, birth details, daily readings, privacy questions, TestFlight feedback, and launch-version bugs.</p>
+        <div class="cta-row">
+          <a class="button primary" href="mailto:support@starandsilk.app?subject=Star%20and%20Silk%20support%20request&body=Device:%0AiOS%20version:%0AApp%20version:%0AWhat%20happened:%0AWhat%20I%20expected:%0A">Email Support</a>
+          <a class="button secondary" href="#help">See Help Topics</a>
+        </div>
+      </div>
+    </section>
 
-    <h2>What to Include</h2>
-    <p>When you contact support, include:</p>
-    <ul>
-      <li>Your device model</li>
-      <li>Your iOS version</li>
-      <li>The Star and Silk app version</li>
-      <li>A short description of what happened</li>
-      <li>A screenshot, if it helps explain the issue</li>
-    </ul>
+    <section class="section" id="contact">
+      <div class="section-inner">
+        <p class="section-kicker">Contact</p>
+        <h2>One support inbox for the launch version.</h2>
+        <p class="section-copy">Star and Silk does not use a website contact form right now. Email keeps the launch site simple and avoids adding extra website tracking or data collection.</p>
+        <div class="support-panel">
+          <div class="mailbox">
+            <p class="section-kicker">Support email</p>
+            <a href="mailto:support@starandsilk.app">support@starandsilk.app</a>
+            <p>Include a screenshot if it helps explain the issue. If you are testing through TestFlight, you can also send feedback directly through the TestFlight app.</p>
+            <div class="cta-row">
+              <a class="button primary" href="mailto:support@starandsilk.app?subject=Star%20and%20Silk%20support%20request&body=Device:%0AiOS%20version:%0AApp%20version:%0AWhat%20happened:%0AWhat%20I%20expected:%0A">Start Support Email</a>
+            </div>
+          </div>
+          <div class="topic-grid">
+            <div class="topic">
+              <strong>Bug report</strong>
+              <p>Tell us what screen you were on, what happened, what you expected, and whether it happens again after reopening the app.</p>
+            </div>
+            <div class="topic">
+              <strong>Privacy question</strong>
+              <p>Read the <a href="privacy.html">Privacy Policy</a> or email with “Privacy” in the subject line.</p>
+            </div>
+            <div class="topic">
+              <strong>Birth details</strong>
+              <p>Use your best known birth time and city. If the exact time is unknown, the app can use midday with less precise rising sign and house detail.</p>
+            </div>
+            <div class="topic">
+              <strong>Purchases</strong>
+              <p>The launch version does not include subscriptions or in-app purchases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Purchases</h2>
-    <p>The launch version does not include subscriptions or in-app purchases.</p>
+    <section class="section alt" id="help">
+      <div class="section-inner">
+        <p class="section-kicker">What to include</p>
+        <h2>A good support email saves a round trip.</h2>
+        <div class="checklist" aria-label="Support email checklist">
+          <div class="check">
+            <span>01</span>
+            <p>Your device model.</p>
+          </div>
+          <div class="check">
+            <span>02</span>
+            <p>Your iOS version.</p>
+          </div>
+          <div class="check">
+            <span>03</span>
+            <p>The Star and Silk app version.</p>
+          </div>
+          <div class="check">
+            <span>04</span>
+            <p>What screen you were on.</p>
+          </div>
+          <div class="check">
+            <span>05</span>
+            <p>What happened and what you expected.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Birth Time and Location</h2>
-    <p>For the most accurate chart, enter your birth time and birth location as closely as possible. If you do not know your exact birth time, Star and Silk uses midday for now. Your daily reading still works, but rising sign and house details may be less precise.</p>
-
-    <h2>Privacy</h2>
-    <p>Star and Silk is designed to store your chart profile and readings on your device. Read the <a href="privacy.html">Privacy Policy</a> for details.</p>
-
-    <h2>TestFlight Feedback</h2>
-    <p>If you are testing through TestFlight, you can also send feedback directly from the TestFlight app. Include what screen you were on and what you expected to happen.</p>
-
-    <h2>Legal</h2>
-    <p>Read the <a href="terms.html">Terms</a>.</p>
-
-    <p><a href="index.html">Back to Star and Silk</a></p>
+    <section class="section">
+      <div class="section-inner">
+        <p class="section-kicker">Common questions</p>
+        <h2>Fast answers for launch.</h2>
+        <div class="faq-grid">
+          <div class="faq">
+            <strong>Is there a Star and Silk account?</strong>
+            <p>No. The launch version has no account system.</p>
+          </div>
+          <div class="faq">
+            <strong>Where is my chart data stored?</strong>
+            <p>Your chart profile, readings, settings, and history are designed to be saved locally on your device.</p>
+          </div>
+          <div class="faq">
+            <strong>Can I delete my app data?</strong>
+            <p>Yes. Deleting the app removes the app's local data from your device.</p>
+          </div>
+          <div class="faq">
+            <strong>What if notifications do not work?</strong>
+            <p>Check iOS notification permission for Star and Silk, then email support if reminders still do not appear.</p>
+          </div>
+          <div class="faq">
+            <strong>Is this professional advice?</strong>
+            <p>No. Star and Silk provides astrology readings for personal reflection and entertainment.</p>
+          </div>
+          <div class="faq">
+            <strong>How do I join the launch list?</strong>
+            <p>Email <a href="mailto:support@starandsilk.app?subject=Star%20and%20Silk%20waitlist&body=Please%20add%20me%20to%20the%20Star%20and%20Silk%20launch%20list.">support@starandsilk.app</a> and ask to be notified when the App Store link is ready.</p>
+          </div>
+        </div>
+        <div class="legal-strip" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="index.html">Back to Star and Silk</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>2026 Phillip Dowd. Star and Silk is intended for personal reflection.</span>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
