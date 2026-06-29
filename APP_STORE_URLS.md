@@ -8,6 +8,8 @@ Generated public page bundle. Upload the HTML files in this folder to the public
 - Privacy Policy URL: https://starandsilk.app/privacy.html
 - Terms URL, optional: https://starandsilk.app/terms.html
 - Support email: support@starandsilk.app
+- Launch state: prelaunch
+
 
 Rendered files:
 
