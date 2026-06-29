@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Star and Silk mark">
+  <rect width="1024" height="1024" rx="140" fill="#1f1b18"/>
+  <rect x="150" y="154" width="36" height="716" rx="18" fill="#1f6f68"/>
+  <rect x="210" y="154" width="36" height="716" rx="18" fill="#7b3f57"/>
+  <rect x="270" y="154" width="36" height="716" rx="18" fill="#d6b567"/>
+  <rect x="342" y="342" width="340" height="340" rx="58" fill="#fffdf8"/>
+  <text x="512" y="612" text-anchor="middle" font-family="Avenir Next, Arial, sans-serif" font-size="310" font-weight="800" fill="#17151c">S</text>
+  <path d="M824 156v88M780 200h88M164 824v64M132 856h64" stroke="#d6b567" stroke-width="18" stroke-linecap="round"/>
+</svg>
