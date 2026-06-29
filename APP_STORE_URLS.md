@@ -14,4 +14,3 @@ Rendered files:
 - `privacy.html`
 - `support.html`
 - `terms.html`
-- `metadata.md`
