@@ -223,7 +223,8 @@
     }
     .fact-grid,
     .copy-grid,
-    .asset-grid {
+    .asset-grid,
+    .fluency-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
@@ -285,6 +286,44 @@
       font-weight: 780;
       text-decoration: none;
     }
+    .fluency-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .fluency-card {
+      min-height: 188px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+    .fluency-card span {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: #fffdf8;
+      font-weight: 820;
+    }
+    .fluency-card:nth-child(3) span,
+    .fluency-card:nth-child(4) span {
+      background: var(--fig);
+    }
+    .fluency-card:nth-child(5) span {
+      background: var(--amber);
+    }
+    .fluency-card strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .fluency-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
     .contact-panel {
       display: grid;
       grid-template-columns: 1fr 0.72fr;
@@ -326,6 +365,7 @@
       .fact-grid,
       .copy-grid,
       .asset-grid,
+      .fluency-grid,
       .contact-panel {
         grid-template-columns: 1fr;
       }
@@ -356,6 +396,7 @@
       <a href="index.html">Home</a>
       <a href="support.html">Support</a>
       <a href="#assets">Assets</a>
+      <a href="#fluency">Fluency</a>
       <a href="#copy">Copy</a>
       <a href="https://www.instagram.com/starandsilk/" target="_blank" rel="me noopener">Instagram</a>
       <a href="privacy.html">Privacy</a>
@@ -402,7 +443,43 @@
       </div>
     </section>
 
-    <section class="section alt" id="assets">
+    <section class="section alt" id="fluency">
+      <div class="section-inner">
+        <p class="section-kicker">Sky Fluency</p>
+        <h2>A private progress system for understanding your own chart.</h2>
+        <p class="section-copy">Star and Silk uses status as self-trust, not public ranking. The long-term product language is about becoming fluent in your own sky: noticing patterns, reading timing, and explaining your chart in plain language.</p>
+        <div class="fluency-grid" aria-label="Sky Fluency ladder">
+          <div class="fluency-card">
+            <span>1</span>
+            <strong>Observer</strong>
+            <p>Name what today asks you to notice.</p>
+          </div>
+          <div class="fluency-card">
+            <span>2</span>
+            <strong>Pattern Keeper</strong>
+            <p>Spot what repeats without overreacting.</p>
+          </div>
+          <div class="fluency-card">
+            <span>3</span>
+            <strong>Transit Reader</strong>
+            <p>Connect sky, timing, mood, and focus.</p>
+          </div>
+          <div class="fluency-card">
+            <span>4</span>
+            <strong>Chart Interpreter</strong>
+            <p>Explain your own chart in plain language.</p>
+          </div>
+          <div class="fluency-card">
+            <span>5</span>
+            <strong>Sky Fluent</strong>
+            <p>Read the day and keep your center.</p>
+          </div>
+        </div>
+        <p class="section-copy">Guardrail: Sky Fluency is not a certification, leaderboard, health claim, prediction claim, or professional astrology credential.</p>
+      </div>
+    </section>
+
+    <section class="section" id="assets">
       <div class="section-inner">
         <p class="section-kicker">Assets</p>
         <h2>Screenshots, logo, and product surfaces.</h2>

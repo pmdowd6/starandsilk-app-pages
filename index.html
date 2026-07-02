@@ -387,6 +387,70 @@
       align-items: stretch;
       margin-top: 34px;
     }
+    .fluency-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: start;
+      margin-top: 34px;
+    }
+    .fluency-ladder {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .fluency-ladder li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+    .fluency-ladder .level {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: #fffdf8;
+      font-weight: 820;
+    }
+    .fluency-ladder li:nth-child(3) .level,
+    .fluency-ladder li:nth-child(4) .level {
+      background: var(--fig);
+    }
+    .fluency-ladder li:nth-child(5) .level {
+      background: var(--amber);
+    }
+    .fluency-ladder strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .fluency-ladder p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+    .principle-list {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+    .principle-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .principle-list b {
+      color: var(--ink);
+    }
     .mailbox {
       padding: clamp(24px, 4vw, 34px);
       border-radius: 8px;
@@ -470,6 +534,7 @@
       .hero-layout,
       .quick-help-inner,
       .screens-layout,
+      .fluency-panel,
       .support-panel,
       .launch {
         grid-template-columns: 1fr;
@@ -527,6 +592,7 @@
     </a>
     <div class="nav-links">
       <a href="#app">App</a>
+      <a href="#fluency">Fluency</a>
       <a href="#support">Support</a>
       <a href="#questions">Questions</a>
       <a href="press.html">Press</a>
@@ -642,6 +708,31 @@
               <img src="Screenshots/AppStoreUpload-1284x2778/06-onboarding.png" alt="Onboarding screen explaining private birth chart setup.">
             </figure>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fluency">
+      <div class="section-inner">
+        <p class="section-kicker">Sky Fluency</p>
+        <h2>As the ritual repeats, the user should feel more capable.</h2>
+        <p class="section-copy">Star and Silk is not built around public status or prediction pressure. It is a private fluency path: the more someone returns, the better they can name patterns, read timing, and stay centered in their own day.</p>
+        <div class="fluency-panel">
+          <div>
+            <ul class="principle-list" aria-label="Sky Fluency principles">
+              <li><b>Private progress:</b> no leaderboard, public rank, or social comparison.</li>
+              <li><b>Plain language:</b> chart literacy without homework or fear.</li>
+              <li><b>Self-trust:</b> becoming an expert in your own sky, not a certified astrologer.</li>
+              <li><b>Outside the app:</b> the Daily Clarity Kit can support the same practice without unlocking app features.</li>
+            </ul>
+          </div>
+          <ol class="fluency-ladder" aria-label="Sky Fluency levels">
+            <li><span class="level">1</span><span><strong>Observer</strong><p>Name what today asks you to notice.</p></span></li>
+            <li><span class="level">2</span><span><strong>Pattern Keeper</strong><p>Spot what repeats without overreacting to it.</p></span></li>
+            <li><span class="level">3</span><span><strong>Transit Reader</strong><p>Connect the sky to timing, mood, and focus.</p></span></li>
+            <li><span class="level">4</span><span><strong>Chart Interpreter</strong><p>Explain your own chart in plain language.</p></span></li>
+            <li><span class="level">5</span><span><strong>Sky Fluent</strong><p>Read the day with confidence and keep your center.</p></span></li>
+          </ol>
         </div>
       </div>
     </section>
